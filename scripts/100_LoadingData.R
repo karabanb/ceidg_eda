@@ -9,21 +9,20 @@ library(bdl)
 #### GATHERING DATA ####################################################################################################
 
 subjects <- get_subjects(parentId = 'G203')
-variables <- search_variables("", subjectId = 'P3254')
+variables <- search_variables("", subjectId = 'P2822')
+
+## Number of Natural Persons Conducting Economic Avtivity
+
+no_of_np <- get_data_by_variable(varId = '152710', unitLevel = 0)
+no_of_np$val_mln <- round(no_of_self_emp$val/10^6, 2)
+
+## Number of New Entries of Natural Persons Conducting Economic Activity
+
+no_of_new_np <- get_data_by_variable(varId = '153362', unitLevel = 0)
+
+## Number of Removed Entries of Natural Persons Conducting Economic Activity
+
+no_of_rem_np <- get_data_by_variable(varId = '153390', unitLevel = 0)
 
 
-no_of_self_emp <- get_data_by_variable(varId = '390996', unitLevel = 0)
-no_of_self_emp$val_mln <- round(no_of_self_emp$val/10^6, 2)
-
-#### PLOTS #############################################################################################################
-
-opacity = 0.6
-color = 'darkblue'
-
-ggplot(no_of_self_emp, aes(year, val_mln)) +
-  geom_col(alpha = opacity, fill = color) +
-  geom_text(aes(label =val_mln), vjust = 2, color = 'white', size = 3) +
-  scale_y_continuous(labels = scales::number) +
-  ylab('Natural Persons') +
-  xlab('Year') +
-  theme_bw()
+  
