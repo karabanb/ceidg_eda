@@ -19,10 +19,16 @@ no_of_np$val_mln <- round(no_of_self_emp$val/10^6, 2)
 ## Number of New Entries of Natural Persons Conducting Economic Activity
 
 no_of_new_np <- get_data_by_variable(varId = '153362', unitLevel = 0)
+no_of_new_np$val_mln <- round(no_of_new_np$val/10^6, 2)
 
 ## Number of Removed Entries of Natural Persons Conducting Economic Activity
 
 no_of_rem_np <- get_data_by_variable(varId = '153390', unitLevel = 0)
+no_of_rem_np$val_mln <- round(no_of_rem_np$val/10^6, 2)
+
+## Number of Natural Persons Conducting Economic Activity per 1000 population
+
+no_of_np_per1000 <- get_data_by_variable(varId = '458174', unitLevel = 0)  
 
 
-  
+no_of_np_per100_work <- get_data_by_variable(varId = '288054', unitLevel = 0)
